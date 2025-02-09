@@ -1,3 +1,4 @@
+import { useState } from "react";
 export default function Update() {
     const [shortCode, setShortCode] = useState("");
     const [newUrl, setNewUrl] = useState("");

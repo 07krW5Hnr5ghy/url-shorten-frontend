@@ -1,3 +1,4 @@
+import { useState } from "react";
 export default function Stats() {
     const [shortCode, setShortCode] = useState("");
     const [stats, setStats] = useState(null);

@@ -1,3 +1,4 @@
+import { useState } from "react";
 export default function Shorten() {
     const [url, setUrl] = useState("");
     const [shortenedUrl, setShortenedUrl] = useState(null);
