@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Shorten from "./pages/Shorten";
 import Stats from "./pages/Stats";
 import Update from "./pages/Update";
-import { useState, useEffect } from "react";
+import Delete from './pages/Delete';
 
 function App() {
   return (
@@ -15,12 +15,14 @@ function App() {
           <Link to="/shorten" className="text-blue-500 font-semibold">Shorten URL</Link>
           <Link to="/stats" className="text-blue-500 font-semibold">Check Stats</Link>
           <Link to="/update" className="text-blue-500 font-semibold">Update URL</Link>
+          <Link to="/delete" className="text-blue-500 font-semibold">Delete URL</Link>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shorten" element={<Shorten />} />
           <Route path="/stats" element={<Stats />} />
           <Route path="/update" element={<Update />} />
+          <Route path="/delete" element={<Delete/>}/>
         </Routes>
       </div>
     </Router>
