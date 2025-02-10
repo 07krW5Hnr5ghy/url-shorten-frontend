@@ -1,12 +1,18 @@
 import { useState } from "react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 export default function Stats() {
     const [shortCode, setShortCode] = useState("");
     const [stats, setStats] = useState(null);
   
     const fetchStats = async () => {
       const response = await fetch(`http://localhost:3001/api/shorten/${shortCode}/stats`);
-      const data = await response.json();
-      setStats(data);
+      if (response.ok) {
+        const data = await response.json();
+        setStats(data);
+        console.log(data);
+      } else {
+        alert("Short URL not found.");
+      }
     };
   
     return (
@@ -22,7 +28,20 @@ export default function Stats() {
         <button onClick={fetchStats} className="bg-blue-500 text-white p-2 rounded">
           Check Stats
         </button>
-        {stats && <p className="mt-4">Access Count: {stats.accessCount}</p>}
+         {stats && (
+                <div className="mt-6">
+                    <h3 className="text-lg font-semibold">Total Visits: {stats.accessCount}</h3>
+                    <ResponsiveContainer width="100%" height={300}>
+                        <BarChart data={stats.accessLogs.map((log, index) => ({ index, timestamp: log.timestamp }))}>
+                            <XAxis dataKey="index" />
+                            <YAxis />
+                            <Tooltip />
+                            <Bar dataKey="index" fill="#4F46E5" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
+            )
+          }
       </div>
     );
   }

@@ -10,6 +10,7 @@ export default function Shorten() {
         body: JSON.stringify({ url }),
       });
       const data = await response.json();
+      console.log(data);
       setShortenedUrl(data);
     };
   
