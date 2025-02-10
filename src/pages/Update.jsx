@@ -4,7 +4,7 @@ export default function Update() {
     const [newUrl, setNewUrl] = useState("");
   
     const handleUpdate = async () => {
-      await fetch(`http://localhost:3001/api/shorten/${shortCode}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/${shortCode}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url: newUrl }),

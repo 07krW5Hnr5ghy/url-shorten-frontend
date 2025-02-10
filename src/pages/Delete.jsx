@@ -3,7 +3,7 @@ export default function Delete() {
     const [shortCode, setShortCode] = useState("");
   
     const handleDelete = async () => {
-      const response = await fetch(`http://localhost:3001/api/shorten/${shortCode}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/${shortCode}`, {
         method: "DELETE",
       });
       if (response.status === 204) {
